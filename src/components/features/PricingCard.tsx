@@ -2,7 +2,7 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent, } from "@/co
 
 export default function PricingCard() {
     return (
-        <Card>
+        <Card className="mt-6">
             <CardHeader>
                 <CardTitle>Pricing Structure</CardTitle>
                 <CardDescription>Vehicles returning within 1 hour after leaving are charged continously</CardDescription>
