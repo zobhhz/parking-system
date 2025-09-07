@@ -39,7 +39,10 @@ export default function RootLayout({
         </div>
         {children}
         <footer className="mt-2 p-4">
-          <p className="text-gray-500 text-center">Built by Alyssa Palmares. Source code available on Github (soon).</p>
+          <div className="text-gray-500 text-center">
+            Built by <a href="https://zobhhz.github.io/" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Alyssa Palmares</a>.
+            Source code available on <a href="https://github.com/zobhhz/parking-system" target="_blank" rel="noopener noreferrer" className="underline underline-offset-2">Github</a>.
+          </div>
         </footer>
       </body>
     </html>

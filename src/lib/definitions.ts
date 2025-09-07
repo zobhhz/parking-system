@@ -21,7 +21,8 @@ export interface Vehicle {
     entryTime: Date
     exitTime?: Date
     lastExitTime?: Date // For continuous rate calculation
-    assignedSlot?: number
+    assignedSlot?: string
+    entryPoint?: number
 }
 
 export interface ParkingFee {
