@@ -1,24 +1,32 @@
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-export default function StatusCard() {
+import { ParkingStatus } from "@/lib/definitions";
+
+type StatusCardProps = {
+    status: ParkingStatus
+    entryPoints: number
+}
+
+export default function StatusCard({ status, entryPoints }: StatusCardProps) {
     return (
         <Card>
             <CardHeader><CardTitle>Parking Status</CardTitle></CardHeader>
             <CardContent>
                 {/* Slots Overview */}
                 <div className="grid grid-cols-2 gap-4">
-                    <StatusItem title="Total Slots" value="10" />
-                    <StatusItem title="Available" value="10" />
-                    <StatusItem title="Entry Points" value="3" />
-                    <StatusItem title="Occupied" value="0" />
+                    <StatusItem title="Total Slots" value={status.totalSlots} />
+                    <StatusItem title="Available" value={status.availableSlots} />
+                    <StatusItem title="Entry Points" value={entryPoints} />
+                    <StatusItem title="Occupied" value={status.occupiedSlots} />
                 </div>
                 {/* Number of Slots per Size */}
                 <div className="mt-4 pt-4 border-t">
                     <p className="font-medium mb-2">Number of Slots per Size</p>
                     <div className="flex flex-row gap-2 text-sm">
-                        <Badge>Small: 3</Badge>
-                        <Badge>Medium: 4</Badge>
-                        <Badge>Large: 3</Badge>
+
+                        <Badge>Small (SP): {status.slotsBySize.small}</Badge>
+                        <Badge>Medium (MP): {status.slotsBySize.medium}</Badge>
+                        <Badge>Large (LP): {status.slotsBySize.large}</Badge>
                     </div>
                 </div>
             </CardContent>
@@ -26,7 +34,7 @@ export default function StatusCard() {
     );
 }
 
-function StatusItem({ title, value }: { title: string, value: string }) {
+function StatusItem({ title, value }: { title: string, value: number }) {
     let valueColor = "";
 
     if (title === "Available") {

@@ -4,14 +4,11 @@ export enum VehicleSize {
     LARGE = "L",
 }
 
-export enum SlotSize {
-    SMALL = 0,
-    MEDIUM = 1,
-    LARGE = 2,
-}
+export type SlotSize = "small" | "medium" | "large"
 
 export interface ParkingSlot {
-    id: number
+    /** Naming convention follows Slot Size + Number. For example, SP1 is for small parking lots */
+    id: string
     size: SlotSize
     distances: number[] // Distance from each entry point
     isOccupied: boolean
@@ -35,4 +32,11 @@ export interface ParkingFee {
     dailyFee: number
     totalFee: number
     breakdown: string
+}
+
+export type ParkingStatus = {
+    totalSlots: number
+    occupiedSlots: number
+    availableSlots: number
+    slotsBySize: { small: number; medium: number; large: number }
 }
