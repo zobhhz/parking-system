@@ -15,9 +15,9 @@ export default function PricingCard() {
                 <div className="py-4 md:py-0 md:px-4 border-b md:border-b-0 md:border-r">
                     <h3 className="font-medium mb-2">Hourly Rates (after first 3 hours)</h3>
                     <ul className="space-y-1">
-                        <li>Small slots: ₱20/hour</li>
-                        <li>Medium slots: ₱60/hour</li>
-                        <li>Large slots: ₱100/hour</li>
+                        <li>Small slots (SP): ₱20/hour</li>
+                        <li>Medium slots (MP): ₱60/hour</li>
+                        <li>Large slots (LP): ₱100/hour</li>
                     </ul>
                 </div>
                 <div className="pt-4 md:py-0 md:pl-4">

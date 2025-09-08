@@ -23,7 +23,7 @@ export default function CurrentlyParkedCard({ parkedVehicles }: CurrentlyParkedC
                                 <div>
                                     <p className="font-medium">{vehicle.plateNumber}</p>
                                     <p className="text-xs text-muted-foreground">
-                                        {vehicle.assignedSlot} • {vehicle.entryTime.toLocaleTimeString()}
+                                        {vehicle.assignedSlot} • entered {vehicle.entryTime.toLocaleString()}
                                     </p>
                                 </div>
                                 <Badge className={getBadgeColor(vehicle.size)}>{vehicle.size}</Badge>

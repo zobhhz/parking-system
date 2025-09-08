@@ -22,7 +22,7 @@ export default function StatusCard({ status, entryPoints }: StatusCardProps) {
                 {/* Number of Slots per Size */}
                 <div className="mt-4 pt-4 border-t">
                     <p className="font-medium mb-2">Number of Slots per Size</p>
-                    <div className="flex flex-row gap-2 text-sm">
+                    <div className="flex flex-row gap-2 text-sm hover:cursor-default">
 
                         <Badge className="bg-green-100 text-green-800 hover:bg-green-200">Small (SP): {status.slotsBySize.small}</Badge>
                         <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-200">Medium (MP): {status.slotsBySize.medium}</Badge>

@@ -18,14 +18,14 @@ type OperationsCardProps = {
         entryDate?: string,
         entryTime?: string
     ) => void
-    // onUnpark: (
-    //     plateNumber: string,
-    //     exitDate?: string,
-    //     exitTime?: string
-    // ) => void
+    onUnpark: (
+        plateNumber: string,
+        exitDate?: string,
+        exitTime?: string
+    ) => void
 }
 
-export default function OperationsCard({ parkingSystem, onPark }: OperationsCardProps) {
+export default function OperationsCard({ parkingSystem, onPark, onUnpark }: OperationsCardProps) {
     const [plateNumber, setPlateNumber] = useState("")
     const [unparkPlateNumber, setUnparkPlateNumber] = useState("")
     const [vehicleSize, setVehicleSize] = useState<VehicleSize | null>(null)
@@ -71,11 +71,11 @@ export default function OperationsCard({ parkingSystem, onPark }: OperationsCard
             setUnparkError(`Vehicle ${unparkPlateNumber} is not currently parked`)
             return
         }
-        // onUnpark(
-        //     unparkPlateNumber,
-        //     useManualTime ? exitDate : undefined,
-        //     useManualTime ? exitTime : undefined,
-        // )
+        onUnpark(
+            unparkPlateNumber,
+            useManualTime ? exitDate : undefined,
+            useManualTime ? exitTime : undefined,
+        )
 
         // Reset fields
         setUnparkError("")
