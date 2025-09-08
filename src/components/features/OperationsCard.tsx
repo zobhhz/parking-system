@@ -45,6 +45,13 @@ export default function OperationsCard({ parkingSystem, onPark, onUnpark }: Oper
         return today.toISOString().split("T")[0]
     }
 
+    const isPlateValid = (plate: string) => {
+        if (!plate || plate.trim().length === 0) return false
+        if (plate.length > 10) return false
+        if (!/^[A-Z0-9\-]+$/.test(plate)) return false
+        return true
+    }
+
     const handleParkOnClick = () => {
         if (vehicleSize !== null && entryPointIndex !== null) {
             onPark(
@@ -193,11 +200,12 @@ export default function OperationsCard({ parkingSystem, onPark, onUnpark }: Oper
                         {/* Warnings */}
                         {isPlateAlreadyParked && (<WarningMessage text={`Vehicle ${plateNumber} is already parked`} />)}
                         {noSlotsAvailable && (<WarningMessage text={`No available slots for ${vehicleSize} vehicles`} />)}
+                        {plateNumber && !isPlateValid(plateNumber) && (<WarningMessage text="Plate number must be 1–10 characters and only contain letters, numbers, or dashes." />)}
                         <Button
                             className="w-full disabled:cursor-not-allowed"
                             onClick={handleParkOnClick}
                             disabled={
-                                !plateNumber ||                // missing plate number
+                                !isPlateValid(plateNumber) ||  // plate number validation
                                 vehicleSize === null ||        // no vehicle size chosen
                                 entryPointIndex === null ||    // no entry point chosen
                                 isPlateAlreadyParked ||        // already parked
